@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { addToCartIcon, heartVector1 } from "../assets/icons/index";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 export default ProductItem = ({
   id,
@@ -13,6 +14,7 @@ export default ProductItem = ({
   type,
 }) => {
   const navigation = useNavigation();
+  const [isFavorite, setIsFavorite] = useState(false);
   const getProductState = () => {
     if (state === "new") {
       return (
@@ -56,7 +58,9 @@ export default ProductItem = ({
             justifyContent: "center",
             alignItems: "center",
           }}
+          onPress={() => setIsFavorite(!true)}
         >
+          {console.log(isFavorite)}
           <Image source={heartVector1} />
         </TouchableOpacity>
       </View>
